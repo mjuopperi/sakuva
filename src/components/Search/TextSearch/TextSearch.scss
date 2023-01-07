@@ -1,0 +1,19 @@
+.text-search {
+  &__input {
+    background: #121212;
+    border: none;
+    outline: none;
+    font-size: 1.4em;
+    line-height: 1.5em;
+    padding: 4px 8px;
+    width: 100%;
+
+    border-bottom: 2px solid transparent;
+
+    &:focus,
+    &:active {
+      border-color: transparent;
+      border-bottom: 2px solid #b3b3b3
+    }
+  }
+}

@@ -1,0 +1,7 @@
+.search {
+  width: 1200px;
+  margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 3fr);
+  column-gap: 16px;
+}

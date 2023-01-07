@@ -1,0 +1,38 @@
+.image-list {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  column-gap: 16px;
+
+  &__column {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  &__image-container {
+    position: relative;
+    padding-bottom: 40%;
+    overflow: hidden;
+
+    &--vertical {
+      padding-bottom: 150%;
+    }
+
+    &--horizontal {
+      padding-bottom: 66.66666%;
+    }
+
+    &--grayscale img {
+      // Most grayscale images have white scan borders that look bad. Hide them by zooming in slightly
+      transform: scale(1.05);
+    }
+
+    img {
+      object-fit: cover;
+      object-position: bottom center;
+    }
+  }
+}
