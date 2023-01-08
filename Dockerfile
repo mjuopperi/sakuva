@@ -18,7 +18,9 @@ RUN \
 FROM node:19-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY . .
+COPY src .
+COPY public .
+COPY next.config.js package.json package-lock.json tsconfig.json ./
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
