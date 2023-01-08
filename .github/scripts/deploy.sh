@@ -9,5 +9,5 @@ ssh-add - <<< "$SSH_PRIVATE_KEY"
 ssh "$SSH_USERNAME@$SERVER_ADDRESS" "
   cd /data/sakuva
   sudo docker-compose pull --quiet web
-  sudo docker-compose restart web
+  sudo docker-compose up -d web
 "
