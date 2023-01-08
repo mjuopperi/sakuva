@@ -16,6 +16,13 @@ RUN \
 
 # Rebuild the source code only when needed
 FROM node:19-alpine AS builder
+ARG SSR_API_HOST
+ENV SSR_API_HOST=${SSR_API_HOST}
+ARG NEXT_PUBLIC_API_HOST
+ENV NEXT_PUBLIC_API_HOST=${NEXT_PUBLIC_API_HOST}
+ARG NEXT_PUBLIC_IMAGE_HOST
+ENV NEXT_PUBLIC_IMAGE_HOST=${NEXT_PUBLIC_IMAGE_HOST}
+
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY src .
