@@ -11,6 +11,8 @@ body {
 * {
   color: $foreground;
   box-sizing: border-box;
+  font-family: inherit;
+  font-weight: inherit;
 }
 
 main {
