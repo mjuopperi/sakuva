@@ -16,6 +16,16 @@
     transform: scale(1.05);
   }
 
+  &--fill {
+    img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      inset: 0;
+      color: transparent;
+    }
+  }
+
   img {
     object-fit: cover;
     object-position: bottom center;
