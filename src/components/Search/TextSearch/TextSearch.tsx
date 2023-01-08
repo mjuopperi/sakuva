@@ -11,7 +11,7 @@ export default function TextSearch({ setQuery }: SearchProps) {
   const [searchInput, setSearchInput] = useState(defaultQueryOptions.q)
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      if (searchInput) {
+      if (searchInput != undefined) {
         setQuery(searchInput)
       }
     }, 400)
