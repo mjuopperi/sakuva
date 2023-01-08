@@ -1,4 +1,6 @@
+@import "content.module";
+
 .content {
-  max-width: 1200px;
-  margin: 16px 16px 48px;
+  max-width: $content-max-width;
+  margin: 16px $content-horizontal-margin 48px;
 }

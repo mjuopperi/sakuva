@@ -1,0 +1,7 @@
+$content-max-width: 1200px;
+$content-horizontal-margin: 16px;
+
+:export {
+  contentMaxWidth: $content-max-width;
+  contentHorizontalMargin: $content-horizontal-margin
+}

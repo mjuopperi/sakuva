@@ -17,7 +17,12 @@ function srcset(image: ImageModel): string {
 }
 
 
-export default function Image({ image }: {image: ImageModel}) {
+interface ImageProps {
+  image: ImageModel;
+  sizes: string
+}
+
+export default function Image({ image, sizes }: ImageProps) {
   return (
     <div
       key={image.id}
@@ -31,9 +36,7 @@ export default function Image({ image }: {image: ImageModel}) {
       <img
         src={imgUrl(image.urlPath)}
         srcSet={srcset(image)}
-        sizes="(max-width: 768px) 100vw,
-                     (max-width: 1200px) 50vw,
-                     33vw"
+        sizes={sizes}
         alt={image.caption}
       />
     </div>

@@ -1,14 +1,16 @@
+@import "ImageList.module";
+
 .image-list {
   list-style-type: none;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: start;
-  column-gap: 16px;
+  column-gap: $grid-gap;
 
   &__column {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: $grid-gap;
   }
 }
