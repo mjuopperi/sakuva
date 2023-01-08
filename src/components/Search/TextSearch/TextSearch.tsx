@@ -21,7 +21,13 @@ export default function TextSearch({ setQuery }: SearchProps) {
 
   return (
     <div className="text-search">
-      <input className="text-search__input" type="search" value={searchInput} onChange={e => setSearchInput(e.target.value)} />
+      <input
+        className="text-search__input"
+        type="search"
+        placeholder="Hae kuvia"
+        value={searchInput}
+        onChange={e => setSearchInput(e.target.value)}
+      />
     </div>
   )
 }
