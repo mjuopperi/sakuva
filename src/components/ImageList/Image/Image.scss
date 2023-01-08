@@ -1,14 +1,17 @@
 .image {
   position: relative;
-  padding-bottom: 40%;
   overflow: hidden;
 
-  &--vertical {
+  &--vertical:not(&--blur),
+  &--vertical .lazy-load-image-background {
     padding-bottom: 150%;
+    width: 100%;
   }
 
-  &--horizontal {
+  &--horizontal:not(&--blur),
+  &--horizontal .lazy-load-image-background {
     padding-bottom: 66.66666%;
+    width: 100%;
   }
 
   &--grayscale img {

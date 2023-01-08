@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 
 import { imgUrl } from '../../../api/apiUtils'
 import { Image as ImageModel } from '../../../api/imageApi'
@@ -16,6 +18,11 @@ function srcset(image: ImageModel): string {
   return sources.join(',')
 }
 
+function placeholderSrc(image: ImageModel): string {
+  const [basePath, extension] = image.urlPath.split('.')
+  return `${basePath}_${THUMBNAIL_SIZES[0]}.${extension}`
+}
+
 
 interface ImageProps {
   image: ImageModel;
@@ -29,15 +36,19 @@ export default function Image({ image, sizes }: ImageProps) {
       className={[
         'image',
         'image--fill',
+        'image--blur',
         `image--${image.width > image.height ? 'horizontal' : 'vertical'}`,
         `image--${image.isColor ? 'color' : 'grayscale'}`,
       ].join(' ')}
     >
-      <img
+      <LazyLoadImage
         src={imgUrl(image.urlPath)}
         srcSet={srcset(image)}
         sizes={sizes}
         alt={image.caption}
+        threshold={400}
+        effect="blur"
+        placeholderSrc={placeholderSrc(image)}
       />
     </div>
   )
