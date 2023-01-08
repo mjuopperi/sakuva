@@ -1,12 +1,21 @@
 @import "ImageList.module";
+@import "../../app/content.module";
 
 .image-list {
   list-style-type: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   align-items: start;
   column-gap: $grid-gap;
+
+  @media screen and (min-width: $content-width-medium + 2 * $content-horizontal-margin) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media screen and (min-width: $content-width-large + 2 * $content-horizontal-margin) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 
   &__column {
     display: grid;

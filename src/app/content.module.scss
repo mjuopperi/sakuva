@@ -1,7 +1,10 @@
-$content-max-width: 1200px;
 $content-horizontal-margin: 16px;
 
+$content-width-large: 1200px;
+$content-width-medium: 796px;
+
 :export {
-  contentMaxWidth: $content-max-width;
+  contentWithLarge: $content-width-large;
+  contentWithMedium: $content-width-medium;
   contentHorizontalMargin: $content-horizontal-margin
 }

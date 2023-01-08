@@ -1,26 +1,19 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { Image } from '../../api/imageApi'
 import ImageComponent from './Image'
 
-import contentVariables from '../../app/content.module.scss'
+import contentVars from '../../app/content.module.scss'
 import imageListVariables from './ImageList.module.scss'
 import './ImageList.scss'
+import { useContainerWidth } from '../../util/hooks'
 
 
-const MAX_COLUMNS = 3
+const CONTENT_WIDTH_LARGE = parseInt(contentVars.contentWithLarge) + 2 * parseInt(contentVars.contentHorizontalMargin)
+const CONTENT_WIDTH_MEDIUM = parseInt(contentVars.contentWithMedium) + 2 * parseInt(contentVars.contentHorizontalMargin)
 
-function calculateMaxContentWidth(): number {
-  return parseInt(contentVariables.contentMaxWidth) + 2 * parseInt(contentVariables.contentHorizontalMargin)
-}
-
-function calculateMaxImageWidth(): number {
-  return (parseInt(contentVariables.contentMaxWidth) - (MAX_COLUMNS - 1) * parseInt(imageListVariables.gridGap)) / MAX_COLUMNS
-}
-
-const MAX_CONTENT_WIDTH = calculateMaxContentWidth()
-const MAX_IMAGE_WIDTH = calculateMaxImageWidth()
-
+const IMAGE_WIDTH_LARGE = (parseInt(contentVars.contentWithLarge) - 2 * parseInt(imageListVariables.gridGap)) / 3
+const IMAGE_WIDTH_MEDIUM = (parseInt(contentVars.contentWithMedium) - parseInt(imageListVariables.gridGap)) / 2
 
 interface ImageListProps {
   images: Array<Image>
@@ -39,13 +32,27 @@ function getImageColumns(images: Array<Image>, columnCount: number): Array<Array
   return columns
 }
 
+function columnCountFromWidth(width: number) {
+  if (width >= 1200) return 3
+  else if (width >= 796) return 2
+  return 1
+}
+
 export default function ImageList({ images }: ImageListProps) {
-  const columnCount = MAX_COLUMNS
+  const ref = useRef(null)
+  const width = useContainerWidth(ref)
+  const [columnCount, setColumnCount] = useState(columnCountFromWidth(width))
+  useEffect(() => setColumnCount(columnCountFromWidth(width)), [width])
+
   const columns = getImageColumns(images, columnCount)
-  const sizes = `(min-width: ${MAX_CONTENT_WIDTH}px) ${MAX_IMAGE_WIDTH}px, 100vw"`
+  const sizes = [
+    `(min-width: ${CONTENT_WIDTH_LARGE}px) ${IMAGE_WIDTH_LARGE}px`,
+    `(min-width: ${CONTENT_WIDTH_MEDIUM}px) ${IMAGE_WIDTH_MEDIUM}px`,
+    '100vw'
+  ].join(',')
 
   return (
-    <div className="image-list">
+    <div className="image-list" ref={ref}>
       {columns.map((column, i) => (
         <div key={`column-${i}`} className="image-list__column">
           {column.map(image => <ImageComponent key={image.id} image={image} sizes={sizes} />)}

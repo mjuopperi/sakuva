@@ -1,6 +1,14 @@
 @import "content.module";
 
 .content {
-  max-width: $content-max-width;
   margin: 16px $content-horizontal-margin 48px;
+  width: 100vw;
+
+  @media screen and (min-width: $content-width-medium + 2 * $content-horizontal-margin) {
+    width: $content-width-medium;
+  }
+
+  @media screen and (min-width: $content-width-large + 2 * $content-horizontal-margin) {
+    width: $content-width-large;
+  }
 }
