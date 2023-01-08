@@ -1,8 +1,7 @@
 import React from 'react'
-import ImageComponent from 'next/image'
 
 import { Image } from '../../api/imageApi'
-import { imgUrl } from '../../api/apiUtils'
+import ImageComponent from './Image'
 
 import './ImageList.scss'
 
@@ -31,25 +30,7 @@ export default function ImageList({ images }: ImageListProps) {
     <div className="image-list">
       {columns.map((column, i) => (
         <div key={`column-${i}`} className="image-list__column">
-          {column.map(image => (
-            <div
-              key={image.id}
-              className={[
-                'image-list__image-container',
-                `image-list__image-container--${image.width > image.height ? 'horizontal' : 'vertical'}`,
-                `image-list__image-container--${image.isColor ? 'color' : 'grayscale'}`,
-              ].join(' ')}
-            >
-              <ImageComponent
-                src={imgUrl(image.urlPath)}
-                alt={image.caption}
-                fill
-                sizes="(max-width: 768px) 100vw,
-                     (max-width: 1200px) 50vw,
-                     33vw"
-              />
-            </div>
-          ))}
+          {column.map(image => <ImageComponent key={image.id} image={image} />)}
         </div>
       ))}
     </div>

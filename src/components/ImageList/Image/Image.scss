@@ -1,0 +1,23 @@
+.image {
+  position: relative;
+  padding-bottom: 40%;
+  overflow: hidden;
+
+  &--vertical {
+    padding-bottom: 150%;
+  }
+
+  &--horizontal {
+    padding-bottom: 66.66666%;
+  }
+
+  &--grayscale img {
+    // Most grayscale images have white scan borders that look bad. Hide them by zooming in slightly
+    transform: scale(1.05);
+  }
+
+  img {
+    object-fit: cover;
+    object-position: bottom center;
+  }
+}
