@@ -4,12 +4,13 @@ import './Checkbox.scss'
 import { ChangeEvent, ReactNode, useState } from 'react'
 
 interface CheckboxProps {
+  name: string
   initialValue: boolean
   onChange: (value: boolean) => void
   children: ReactNode
 }
 
-export default function Checkbox({ initialValue, onChange, children }: CheckboxProps) {
+export default function Checkbox({ name, initialValue, onChange, children }: CheckboxProps) {
   const [isChecked, setIsChecked] = useState(initialValue)
   function handleChange() {
     const newValue = !isChecked
@@ -18,9 +19,11 @@ export default function Checkbox({ initialValue, onChange, children }: CheckboxP
   }
 
   return (
-    <label>
-      <input type="checkbox" checked={isChecked} onChange={handleChange} />
-      {children}
-    </label>
+    <>
+      <input id={name} name={name} className="checkbox__input" type="checkbox" checked={isChecked} onChange={handleChange} />
+      <label htmlFor={name} className="checkbox__label">
+        {children}
+      </label>
+    </>
   )
 }

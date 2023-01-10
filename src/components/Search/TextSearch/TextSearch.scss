@@ -1,6 +1,11 @@
+@import "../../../styles/globals";
+
 .text-search {
+  flex-grow: 1;
+  min-width: 390px;
+
   &__input {
-    background: #121212;
+    background: $lowlight;
     border: none;
     outline: none;
     font-size: 1.2em;
@@ -10,11 +15,18 @@
     width: 100%;
 
     border-bottom: 2px solid transparent;
+    border-radius: 4px;
 
     &:focus,
     &:active {
       border-color: transparent;
-      border-bottom: 2px solid #b3b3b3
+      border-bottom: 2px solid $highlight;
+    }
+    &::placeholder {
+       color: $foreground;
+    }
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
     }
   }
 }

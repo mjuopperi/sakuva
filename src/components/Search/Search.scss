@@ -1,6 +1,13 @@
 .search {
   margin-bottom: 16px;
-  display: grid;
-  grid-template-columns: minmax(0, 3fr);
-  column-gap: 16px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 8px;
+
+  @media screen and (max-width: 800px) {
+    > * {
+      flex-grow: 1;
+    }
+  }
 }

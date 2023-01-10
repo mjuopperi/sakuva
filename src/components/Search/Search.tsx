@@ -17,7 +17,7 @@ export default function Search({ query, setQuery }: SearchProps) {
   return (
     <div className="search">
       <TextSearch setQuery={q => setQuery({ ...query, q })}/>
-      <Checkbox onChange={handleColorCheckbox} initialValue={false}>Vain värikuvat</Checkbox>
+      <Checkbox name="color" onChange={handleColorCheckbox} initialValue={false}>Vain värikuvat</Checkbox>
     </div>
   )
 }
