@@ -13,12 +13,12 @@ interface ContentProps {
 }
 
 export default function Content({ initialData }: ContentProps) {
-  const [query, setQuery] = useState(defaultQueryOptions.q)
-  const { data: images } = useSearchImages({ q: query, color: defaultQueryOptions.color }, initialData)
+  const [query, setQuery] = useState(defaultQueryOptions)
+  const { data: images } = useSearchImages(query, initialData)
 
   return (
     <div className="content">
-      <Search setQuery={setQuery}/>
+      <Search query={query} setQuery={setQuery}/>
       <ImageList images={images} />
     </div>
   )
