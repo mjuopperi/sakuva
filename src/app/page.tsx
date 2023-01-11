@@ -7,7 +7,7 @@ export default async function Home({}) {
   const initialData = await searchImages(defaultQueryOptions)
   return (
     <>
-      <Content initialData={initialData} />
+      <Content initialData={initialData.data} initialTotal={initialData.total} />
     </>
   )
 }

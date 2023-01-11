@@ -1,4 +1,5 @@
 import { apiUrl } from './apiUtils'
+import { PagedResponse } from './types'
 
 
 export interface QueryOptions {
@@ -6,6 +7,8 @@ export interface QueryOptions {
   start?: Date
   end?: Date
   color?: boolean
+  size?: number
+  page?: number
 }
 
 function toQuery(queryOptions: QueryOptions): Record<string, string> {
@@ -22,6 +25,8 @@ export const defaultQueryOptions: QueryOptions = {
   start: undefined,
   end: undefined,
   color: undefined,
+  size: 15,
+  page: 1,
 }
 
 export interface Image {
@@ -38,8 +43,10 @@ export interface Image {
   urlPath: string,
 }
 
-export async function searchImages(queryOptions: QueryOptions = defaultQueryOptions): Promise<Array<Image>> {
+export async function searchImages(queryOptions: QueryOptions = defaultQueryOptions): Promise<PagedResponse<Image>> {
   const params = new URLSearchParams(toQuery(queryOptions))
   const res = await fetch(apiUrl(`/api/image/search?${params}`))
-  return res.json()
+  const total = parseInt(res.headers.get('x-total-count') || '0')
+  const data = await res.json()
+  return { total, data }
 }

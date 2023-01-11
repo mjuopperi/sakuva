@@ -10,11 +10,13 @@ import './content.scss'
 
 interface ContentProps {
   initialData: Array<Image>
+  initialTotal: number
 }
 
-export default function Content({ initialData }: ContentProps) {
+export default function Content({ initialData, initialTotal }: ContentProps) {
   const [query, setQuery] = useState(defaultQueryOptions)
-  const { data: images } = useSearchImages(query, initialData)
+  const { data } = useSearchImages(query, initialData, initialTotal)
+  const images = data?.data || []
 
   return (
     <div className="content">
