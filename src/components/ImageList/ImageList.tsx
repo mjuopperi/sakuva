@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 import { Image } from '../../api/imageApi'
-import ImageComponent from './Image'
+import ImageComponent from '../common/Image'
+import { useContainerWidth } from '../../util/hooks'
 
 import contentVars from '../../app/content.module.scss'
 import imageListVariables from './ImageList.module.scss'
 import './ImageList.scss'
-import { useContainerWidth } from '../../util/hooks'
 
 
 const CONTENT_WIDTH_LARGE = parseInt(contentVars.contentWithLarge) + 2 * parseInt(contentVars.contentHorizontalMargin)
