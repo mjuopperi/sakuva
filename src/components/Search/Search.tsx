@@ -1,6 +1,6 @@
 import { QueryOptions } from '../../api/imageApi'
 import TextSearch from './TextSearch'
-import Checkbox from './Checkbox'
+import Checkbox from '../common/Checkbox'
 
 import './Search.scss'
 
