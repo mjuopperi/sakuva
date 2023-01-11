@@ -1,6 +1,10 @@
 @import "content.module";
 
 .content {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
   margin: 16px $content-horizontal-margin 48px;
   width: 100vw;
 
@@ -10,5 +14,15 @@
 
   @media screen and (min-width: $content-width-large + 2 * $content-horizontal-margin) {
     width: $content-width-large;
+  }
+
+  .search {
+    width: 100%;
+  }
+  .image-list {
+    width: 100%;
+  }
+  .button {
+    margin: 16px 0;
   }
 }

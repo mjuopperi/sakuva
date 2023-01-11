@@ -15,7 +15,7 @@ function toQuery(queryOptions: QueryOptions): Record<string, string> {
   return Object.entries(queryOptions).reduce((acc, [key, value]) => {
     return {
       ...acc,
-      ...(value == undefined ? {} : { [key]: `${value}` })
+      ...(value == undefined ? {} : { [key]: `${value}` }),
     }
   }, {})
 }
@@ -48,5 +48,5 @@ export async function searchImages(queryOptions: QueryOptions = defaultQueryOpti
   const res = await fetch(apiUrl(`/api/image/search?${params}`))
   const total = parseInt(res.headers.get('x-total-count') || '0')
   const data = await res.json()
-  return { total, data }
+  return { page: queryOptions.page || defaultQueryOptions.page!, total, data }
 }
