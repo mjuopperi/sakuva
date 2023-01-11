@@ -1,0 +1,28 @@
+@import "src/styles/globals";
+
+.button {
+  position: relative;
+  background: $lowlight;
+  display: inline-block;
+  text-align: center;
+  line-height: 1.9em;
+  font-size: 1.2em;
+  font-weight: 200;
+  padding: 0 48px;
+  border-radius: 4px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  user-select: none;
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &:hover,
+  &:focus {
+    border-bottom-color: $highlight;
+    &:disabled {
+      border-bottom-color: $inactive;
+    }
+  }
+}
