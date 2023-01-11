@@ -55,7 +55,14 @@ export default function ImageList({ images }: ImageListProps) {
     <div className="image-list" ref={ref}>
       {columns.map((column, i) => (
         <div key={`column-${i}`} className="image-list__column">
-          {column.map(image => <ImageComponent key={image.id} image={image} sizes={sizes} />)}
+          {column.map(image => (
+            <div key={image.id} className="image-container">
+              <ImageComponent image={image} sizes={sizes} />
+              <div className={`image-overlay image-overlay--${image.width > image.height ? 'horizontal' : 'vertical'}`}>
+                <span className="image-overlay__caption">{image.caption}</span>
+              </div>
+            </div>
+          ))}
         </div>
       ))}
     </div>
