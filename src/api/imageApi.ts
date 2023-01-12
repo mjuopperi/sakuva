@@ -50,3 +50,8 @@ export async function searchImages(queryOptions: QueryOptions = defaultQueryOpti
   const data = await res.json()
   return { page: queryOptions.page || defaultQueryOptions.page!, total, data }
 }
+
+export async function getImage(id: number): Promise<Image> {
+  const res = await fetch(apiUrl(`/api/image/meta/${id}`))
+  return res.json()
+}

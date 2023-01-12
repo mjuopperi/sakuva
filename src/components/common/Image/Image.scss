@@ -2,14 +2,14 @@
   position: relative;
   overflow: hidden;
 
-  &--vertical:not(&--blur),
-  &--vertical .lazy-load-image-background {
+  &--fill.image--vertical:not(&--blur),
+  &--fill.image--vertical .lazy-load-image-background {
     padding-bottom: 150%;
     width: 100%;
   }
 
-  &--horizontal:not(&--blur),
-  &--horizontal .lazy-load-image-background {
+  &--fill.image--horizontal:not(&--blur),
+  &--fill.image--horizontal .lazy-load-image-background {
     padding-bottom: 66.66666%;
     width: 100%;
   }
@@ -22,8 +22,6 @@
   &--fill {
     img {
       position: absolute;
-      height: 100%;
-      width: 100%;
       inset: 0;
       color: transparent;
     }
@@ -32,5 +30,8 @@
   img {
     object-fit: cover;
     object-position: bottom center;
+    height: 100%;
+    width: 100%;
+    display: block;
   }
 }

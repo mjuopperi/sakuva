@@ -27,6 +27,10 @@
   .image-container {
     position: relative;
 
+    > a {
+      cursor: zoom-in;
+    }
+
     .image-overlay {
       position: absolute;
       top: 0;

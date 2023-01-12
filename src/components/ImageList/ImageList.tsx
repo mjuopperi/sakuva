@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 
 import { Image } from '../../api/imageApi'
 import ImageComponent from '../common/Image'
@@ -57,10 +58,12 @@ export default function ImageList({ images }: ImageListProps) {
         <div key={`column-${i}`} className="image-list__column">
           {column.map(image => (
             <div key={image.id} className="image-container">
-              <ImageComponent image={image} sizes={sizes} />
-              <div className={`image-overlay image-overlay--${image.width > image.height ? 'horizontal' : 'vertical'}`}>
-                <span className="image-overlay__caption">{image.caption}</span>
-              </div>
+              <Link href={`/${image.id}`} >
+                <ImageComponent image={image} sizes={sizes} fill />
+                <div className={`image-overlay image-overlay--${image.width > image.height ? 'horizontal' : 'vertical'}`}>
+                  <span className="image-overlay__caption">{image.caption}</span>
+                </div>
+              </Link>
             </div>
           ))}
         </div>

@@ -27,15 +27,16 @@ function placeholderSrc(image: ImageModel): string {
 interface ImageProps {
   image: ImageModel;
   sizes: string
+  fill?: boolean
 }
 
-export default function Image({ image, sizes }: ImageProps) {
+export default function Image({ image, sizes, fill = false }: ImageProps) {
   return (
     <div
       key={image.id}
       className={[
         'image',
-        'image--fill',
+        ...(fill ? ['image--fill'] : []),
         'image--blur',
         `image--${image.width > image.height ? 'horizontal' : 'vertical'}`,
         `image--${image.isColor ? 'color' : 'grayscale'}`,
