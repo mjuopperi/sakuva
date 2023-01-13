@@ -24,7 +24,7 @@ export const defaultQueryOptions: QueryOptions = {
   q: '',
   start: undefined,
   end: undefined,
-  color: undefined,
+  color: true,
   size: 15,
   page: 1,
 }

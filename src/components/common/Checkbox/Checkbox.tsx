@@ -5,7 +5,7 @@ import { ChangeEvent, ReactNode, useState } from 'react'
 
 interface CheckboxProps {
   name: string
-  initialValue: boolean
+  initialValue: boolean | undefined
   onChange: (value: boolean) => void
   children: ReactNode
 }
