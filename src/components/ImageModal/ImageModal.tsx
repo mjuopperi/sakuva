@@ -1,5 +1,7 @@
 import React from 'react'
 import Modal from 'react-modal'
+import { FiX } from 'react-icons/fi'
+
 
 import { useGetImage } from '../../api/imageHooks'
 import ImageComponent from '../common/Image/Image'
@@ -17,6 +19,8 @@ export default function ImageModal({ imageId, onClose }: ImageModalProps) {
     '100vw'
   ].join(',')
 
+  if (!image) return null
+
   return (
     <Modal
       isOpen
@@ -25,7 +29,10 @@ export default function ImageModal({ imageId, onClose }: ImageModalProps) {
       overlayClassName="image-modal-overlay"
       appElement={document.getElementById('main') as HTMLElement}
     >
-      {image ? <ImageComponent image={image} sizes={sizes} /> : null}
+      <div className="image-modal__content">
+        <button className="image-modal__close-button" onClick={onClose}><FiX /></button>
+        <ImageComponent image={image} sizes={sizes} />
+      </div>
     </Modal>
   )
 }

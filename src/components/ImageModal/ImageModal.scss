@@ -1,27 +1,64 @@
 @import "../../styles/globals";
+@import "../../app/content.module";
 
 .image-modal-overlay {
   position: fixed;
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
+  align-items: center;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
+  max-height: 100vh;
 }
 
 .image-modal {
   position: relative;
   background: $background;
-  margin: 40px;
   flex-grow: 0;
-  display: flex;
+  display: contents;
   box-shadow: 0 10px 18px 8px rgba(0, 0, 0, 0.5);
 
+  $content-padding: 40px;
+  &__content {
+    position: relative;
+    max-height: 100%;
+    max-width: 100%;
+
+    @media screen and (min-width: $content-width-medium + 2 * $content-horizontal-margin) {
+      padding: $content-padding;
+    }
+  }
+
+  &__close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    @media screen and (min-width: $content-width-medium + 2 * $content-horizontal-margin) {
+      top: $content-padding;
+      right: $content-padding;
+    }
+    z-index: 100;
+
+    background: none;
+    border: none;
+    filter:drop-shadow(0 1px 2px #000);
+    font-size: 40px;
+    line-height: 60px;
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+  }
+
   .image {
-    flex-grow: 0;
+    height: 100%;
+    width: 100%;
   }
 
   .lazy-load-image-background {
